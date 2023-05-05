@@ -11,8 +11,8 @@ export const StyledButton = styled.button`
   background-color: var(--green);
   color: #eee;
   border: none;
-  border-radius: 5px;
-  padding: 12px 24px;
+  border-radius: 8px;
+  padding: 8px 24px ;
   font-size: 16px;
   cursor: pointer;
   outline: none;
@@ -25,7 +25,7 @@ export const StyledButton = styled.button`
     background-color: var(--bright-green);
     box-shadow: var(--shadow-two);
    
-    & >.iconLoader {
+    & >svg {
     fill: #888;
     }
   }

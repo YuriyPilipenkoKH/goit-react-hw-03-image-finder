@@ -73,6 +73,10 @@ list-style: none;
 li{
   padding: 0;
 }
+img {
+  display: block;
+  width: 100%;
+}
 
 
 /* =====anim======== */
@@ -279,28 +283,18 @@ img {
  * Стили компонента Modal
  */
 
-.Overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: rgba(0, 0, 0, 0.8);
-  z-index: 1200;
+/* .Overlay {
+  
 }
 
 .Modal {
-  max-width: calc(100vw - 48px);
-  max-height: calc(100vh - 24px);
-}
+
+} */
 
 /*
 * Стили компонента Buton (Load more)
 */
-.Button {
+/* .Button {
   padding: 8px 16px;
   border-radius: 2px;
   background-color: #3f51b5;
@@ -324,9 +318,17 @@ img {
 .Button:hover,
 .Button:focus {
   background-color: #303f9f;
-}
+} */
 
-.iconLoader {
+.iconLoader, .iconCatSearch {
   transition: 0.4s ease;
   fill: #eee;
+}
+
+.search-btn {
+  padding: 4px 12px;
+}
+
+.iconCatSearch {
+  align-self: baseline;
 }
