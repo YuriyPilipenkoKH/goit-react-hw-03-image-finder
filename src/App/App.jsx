@@ -5,53 +5,75 @@ import { iconLoader } from 'utils/icons'
 import { Searchbar } from 'components/Searchbar/Searchbar'
 import {fetchCard} from 'servises/fetch'
 import { ImageGallery } from 'components/ImageGallery/ImageGallery'
-import { Modal } from 'components/Modal/Modal'
+
 
 export class App extends Component {
   state = {
     items : [],
+    page: 1,
+    perPage: 20,
     query: '',
     status: 'idle',
     totalHits: 0,
-    showModal: false,
+    total: 0,
+    remainder: 0,
   }
 
-  handleSubmit =(searchQyery) => {
-    this.setState({query: searchQyery})
-    fetchCard(searchQyery, 1, 20)
+  handleSubmit =(searchQuery) => {
+  
+    this.setState({
+      query: searchQuery,
+      page: 1,
+    })
+    const {page, perPage } = this.state
+    fetchCard(searchQuery, page, perPage)
 
     .then(data => {
-      const {hits, totalHits } = data
+      const {hits, totalHits, total } = data
       
       this.setState({
         items: hits,
         totalHits: totalHits,
+        total: total,
       })
     })
   }
 
-  toggleModal =() => {
-    this.setState({showModal: !this.state.showModal})
-}
+  onLoadMore = (e) => {
+    e.preventDefault()
+    this.setState(prev =>({page: prev.page +1}))
+
+    const {page, perPage, query } = this.state
+    fetchCard(query, page, perPage)
+    .then(data => {
+      const {hits, totalHits, total } = data
+      
+      this.setState({
+        items: hits,
+        totalHits: totalHits,
+        total: total,
+      })
+    })
+  }
 
 
   render() {
-    const {showModal} = this.state
+    const {items, totalHits} = this.state
     return (
       <Container>
         <Searchbar onSubmit ={this.handleSubmit}></Searchbar>
         <ImageGallery
-         images ={this.state.items}
-         toggleModal ={this.toggleModal}
+         images ={items}
+      
         ></ImageGallery>
         
-        
-        <Button>
+        {totalHits > items.length && (
+          <Button  onClick = {this.onLoadMore}>
           {iconLoader}
           Load More </Button>
-          {showModal &&   <Modal 
-                        toggleModal ={this.toggleModal}
-                         ></Modal>}
+        )}
+        
+          
       
       </Container>
     )

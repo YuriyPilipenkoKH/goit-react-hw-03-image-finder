@@ -5,6 +5,10 @@ import { Overlay, ModalImg } from './Modal.styled'
 
 const modalRoot = document.querySelector('#modal-root')
 export  class Modal extends Component {
+    state = {
+        showModal: this.props.showModal,
+        
+    }
 
     componentDidMount() {
        
@@ -21,7 +25,11 @@ export  class Modal extends Component {
       } 
     
       handleBackdropClick =(e) => {
-        if(e.target === e.currentTarget){
+        const { showModal } = this.state;
+        if((e.target !== e.currentTarget) && showModal){
+            return
+        }
+        else {
             this.props.toggleModal()
         }
       }
@@ -38,7 +46,7 @@ export  class Modal extends Component {
     return createPortal (
         <Overlay onClick  ={this.handleBackdropClick} className="overlay">
         <ModalImg className="modal">
-            <img src="#" alt="#" />
+            <img src={this.props.picture} alt="#" />
         </ModalImg>
         </Overlay>
       ,modalRoot

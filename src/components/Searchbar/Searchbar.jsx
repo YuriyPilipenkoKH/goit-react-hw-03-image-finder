@@ -3,6 +3,7 @@ import Notiflix from 'notiflix'
 import Button from 'components/Button/Button'
 import { iconCatSearch } from 'utils/icons'
 import { SearchForm } from './Searchbar.styled'
+import { Header } from './Searchbar.styled'
 
 export class Searchbar extends Component {
     state = {
@@ -28,7 +29,7 @@ export class Searchbar extends Component {
 
   render() {
     return (
-        <header className="searchbar">
+        <Header className="searchbar">
         <SearchForm 
         onSubmit = {this.handleSubmit}
         className="form">
@@ -46,7 +47,7 @@ export class Searchbar extends Component {
             placeholder="Search images and photos"
           />
         </SearchForm>
-      </header>
+      </Header>
     )
   }
 }

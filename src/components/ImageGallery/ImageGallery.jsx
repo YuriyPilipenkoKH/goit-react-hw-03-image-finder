@@ -1,7 +1,15 @@
 import { ImageGalleryItem } from "components/ImageGalleryItem/ImageGalleryItem"
 import React, { Component } from 'react'
+import { GalleryList } from "./ImageGallery.styled"
+import { Modal } from "components/Modal/Modal"
+
 
 export  class ImageGallery extends Component {
+    state = {
+        showModal: false,
+        large: null,
+    }
+    
 
     componentDidMount() {
         window.addEventListener('click', this.handleOpenModal)
@@ -12,35 +20,51 @@ export  class ImageGallery extends Component {
       } 
     
       handleOpenModal =(e)=> {
-        console.log(e.target.id);
-        if(e.target.nodeName === "IMG" ) {
-        this.props.toggleModal()
+        const { showModal } = this.state;
+        if((e.target.nodeName === "IMG") &&  !showModal) {
+            console.log('alt');
+        this.setState({
+            large: e.target.alt,
+            showModal: true,
+        })    
+     
+        }
+        else {
+            this.setState({ showModal: false });
         }
       }
 
 
+      toggleModal =() => {
+        this.setState({showModal: !this.state.showModal})
+    }
+    
 
   render() {
+    const { showModal, large } = this.state;
     return (
-        
-    <ul className="gallery">
-     {this.props.images.map(i => (
+
+        <>
+         <GalleryList className="gallery">
+     {this.props.images.map(img => (
       
         <ImageGalleryItem 
-        key ={i.id}
-        item = {i}
+        key ={img.id}
+        item = {img}
         />
         ) )}
        
-    </ul>
+    </GalleryList>
+
+    {showModal && large &&  <Modal  
+                showModal = {this.state.showModal}    
+                toggleModal ={this.toggleModal}
+                picture = {large}
+                ></Modal>}
+        </>
+        
     )
   }
 }
 
-// export  class ImageGallery =({images})=> {
-      
 
-//   return (
-
-//   )
-// }
