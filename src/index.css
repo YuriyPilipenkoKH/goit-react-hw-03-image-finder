@@ -325,3 +325,8 @@ img {
 .Button:focus {
   background-color: #303f9f;
 }
+
+.iconLoader {
+  transition: 0.4s ease;
+  fill: #eee;
+}
