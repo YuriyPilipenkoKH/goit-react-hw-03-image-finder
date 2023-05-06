@@ -7,27 +7,33 @@ import { Header } from './Searchbar.styled'
 
 export class Searchbar extends Component {
     state = {
-        q: '',
+        query: '',
     }
 
     handleChange = (e) => {
-     this.setState({q: e.target.value.trim()})
+     this.setState({query: e.target.value.trim()})
     }
+
+  //   handleSubmit =(e) =>{
+  //     e.preventDefault();
+    
+  //     this.setState({query:''})
+  // }
 
   render() {
     return (
         <Header className="searchbar">
         <SearchForm 
-        onSubmit = {this.props.onSubmit}
+        onSubmit={ this.props.onSubmit }
         className="form">
           <Button type="submit" className="search-btn">
-            <span className="button-label">{ iconCatSearch }</span>
+            <span className="button-label"></span>{ iconCatSearch }
           </Button>
       
           <input
             name = 'search'
             onChange={this.handleChange}
-            value = {this.state.q}
+            value = {this.state.query}
             className="input"
             type="text"
             autoComplete="off"

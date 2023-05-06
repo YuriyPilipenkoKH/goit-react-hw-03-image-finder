@@ -14,10 +14,6 @@ export class App extends Component {
     page: 1,
     perPage: 12,
     query: '',
-    status: 'idle',
-    totalHits: 0,
-    total: 0,
-    remainder: 0,
     loadindg: false,
     showModal: false,
     showBtn: false,
@@ -39,13 +35,12 @@ export class App extends Component {
 
     if(reqest === ''){
       Notiflix.Notify.failure('The search string cannot be empty. Please specify your search query.');
-   
      return 
     }
     const { perPage} = this.state
     this.fetchGallery(reqest, 1, perPage)
 
-
+  
 }
 
   onLoadMore = (e) => {
@@ -90,12 +85,11 @@ export class App extends Component {
         this.setState({showBtn: true})
       }
       if (response.length === 0) {
-        Notiflix.Notify.failure('no matches found')
+        Notiflix.Notify.failure('Sorry, there are no images matching your search query. Please try again.')
       }
 
     } catch (error) {
       // Notiflix.Notify.error('xxx')
-      console.log('error',error);
       this.setState({error})
     }
     finally{
@@ -122,7 +116,6 @@ export class App extends Component {
         )}
         
         {showModal &&  <Modal  
-                // showModal = {this.state.showModal} 
                 onModalClose = {this.onModalClose}
                 picture = {largeImgUrl}
                 ></Modal>}
