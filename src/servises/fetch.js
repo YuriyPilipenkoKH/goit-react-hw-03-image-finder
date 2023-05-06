@@ -1,10 +1,13 @@
 import axios from 'axios';
+// import Notiflix from 'notiflix';
 
-const API_KEY = '34491623-5c4ef369d6c59f62bc483440c';
+// const API_KEY = '34491623-5c4ef369d6c59f62bc483440c';
+const API_KEY = '36116810-1d3bc75af19137f2942c13110';
+
 const BASE_URL = 'https://pixabay.com/api';
 
 export  async function fetchCard(query,page,perPage) {
-    try {
+ 
         const params = new URLSearchParams({
             key: API_KEY,  
             q: query,
@@ -16,12 +19,8 @@ export  async function fetchCard(query,page,perPage) {
         });
 
       const response = await axios.get(`${BASE_URL}/?${params}`);
-    //   console.log(response.data);
-     
-      return response.data
-    } catch (error) {
-        console.error(error);
-        // throw Error(response.statusText)
-      
-    }
+  
+      return response.data.hits
+ 
+   
 }

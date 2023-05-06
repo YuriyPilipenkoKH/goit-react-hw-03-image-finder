@@ -25,21 +25,19 @@ export  class Modal extends Component {
       } 
     
       handleBackdropClick =(e) => {
-        const { showModal } = this.state;
-        if((e.target !== e.currentTarget) && showModal){
-            return
-        }
-        else {
-            this.props.toggleModal()
-        }
+      
+        if( e.target === e.currentTarget ){
+          return this.props.onModalClose()   
+           }
       }
 
+
       handleKeyDown =(e) => {
-        if(e.code === 'Escape') {
-            this.props.toggleModal() 
+          if(e.keyCode === 27  ){
+            return this.props.onModalClose()   
+             }
         }
-      }
-    
+      
 
 
   render() {
