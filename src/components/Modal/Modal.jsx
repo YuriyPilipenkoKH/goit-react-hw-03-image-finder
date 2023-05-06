@@ -14,14 +14,14 @@ export  class Modal extends Component {
        
         window.addEventListener('click', this.handleBackdropClick)
         window.addEventListener('keydown', this.handleKeyDown)
-        
+        document.body.style.overflow = 'hidden';
       } 
 
       componentWillUnmount() {
        
         window.removeEventListener('click', this.handleBackdropClick)
         window.removeEventListener('keydown', this.handleKeyDown)
-        
+        document.body.style.overflow = 'unset';
       } 
     
       handleBackdropClick =(e) => {
@@ -37,6 +37,14 @@ export  class Modal extends Component {
             return this.props.onModalClose()   
              }
         }
+
+      //   componentDidMount() {
+      //     
+      // }
+      
+      // componentWillUnmount() {
+      //     
+      // }
       
 
 
