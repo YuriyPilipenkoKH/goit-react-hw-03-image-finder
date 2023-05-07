@@ -1,5 +1,4 @@
 import axios from 'axios';
-// import Notiflix from 'notiflix';
 
 // const API_KEY = '34491623-5c4ef369d6c59f62bc483440c';
 const API_KEY = '36116810-1d3bc75af19137f2942c13110';

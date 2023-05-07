@@ -94,8 +94,11 @@ export class App extends Component {
       }
 
     } catch (error) {
-      // Notiflix.Notify.error('xxx')
-      this.setState({ error})
+      Notiflix.Notify.failure('Sorry, Page not found. Please try again.')
+      this.setState({ 
+        error,
+        loading: false,
+      })
     }
     finally{
       this.setState({loadindg: false})

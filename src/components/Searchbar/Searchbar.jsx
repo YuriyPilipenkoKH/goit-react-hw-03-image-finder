@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-// import Notiflix from 'notiflix'
+import PropTypes from 'prop-types';
 import Button from 'components/Button/Button'
 import { iconCatSearch } from 'utils/icons'
 import { SearchForm } from './Searchbar.styled'
@@ -14,11 +14,6 @@ export class Searchbar extends Component {
      this.setState({query: e.target.value.trim()})
     }
 
-  //   handleSubmit =(e) =>{
-  //     e.preventDefault();
-    
-  //     this.setState({query:''})
-  // }
 
   render() {
     return (
@@ -46,4 +41,6 @@ export class Searchbar extends Component {
   }
 }
 
-
+Searchbar.propTypes = {
+  onSubmit: PropTypes.func.isRequired,
+};

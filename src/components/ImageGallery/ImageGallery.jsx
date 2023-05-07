@@ -1,7 +1,7 @@
+import PropTypes from 'prop-types';
 import { ImageGalleryItem } from "components/ImageGalleryItem/ImageGalleryItem"
 import React, { Component } from 'react'
 import { GalleryList } from "./ImageGallery.styled"
-// import { Modal } from "components/Modal/Modal"
 
 
 export  class ImageGallery extends Component {
@@ -9,37 +9,6 @@ export  class ImageGallery extends Component {
         showModal: false,
         large: null,
     }
-    
-
-    // componentDidMount() {
-    //     window.addEventListener('click', this.handleOpenModal)
-    //   } 
-
-      // componentWillUnmount() {
-      //   window.removeEventListener('click', this.handleOpenModal)
-      // } 
-    
-    //   handleOpenModal =(e)=> {
-    //     const { showModal } = this.state;
-    //     if((e.target.nodeName === "IMG") &&  !showModal) {
-    //         console.log('alt');
-    //     this.setState({
-    //         large: e.target.alt,
-    //         showModal: true,
-    //     })    
-     
-    //     }
-    //     else {
-    //         this.setState({ showModal: false });
-    //     }
-    //   }
-
-
-    //   toggleModal =() => {
-    //     this.setState({showModal: !this.state.showModal})
-    // }
-
-    
     
 
   render() {
@@ -67,4 +36,14 @@ export  class ImageGallery extends Component {
   }
 }
 
+ImageGallery.propTypes = {
+  onClickIMg: PropTypes.func.isRequired,
+  images: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      largeImageURL: PropTypes.string.isRequired,
+      webformatURL: PropTypes.string.isRequired,
+    })
+  ),
+};
 

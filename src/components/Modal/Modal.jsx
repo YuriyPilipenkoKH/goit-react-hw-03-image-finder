@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { createPortal } from 'react-dom'
+import PropTypes from 'prop-types';
 import { Overlay, ModalImg } from './Modal.styled'
 
 
@@ -37,14 +38,6 @@ export  class Modal extends Component {
             return this.props.onModalClose()   
              }
         }
-
-      //   componentDidMount() {
-      //     
-      // }
-      
-      // componentWillUnmount() {
-      //     
-      // }
       
 
 
@@ -58,4 +51,9 @@ export  class Modal extends Component {
       ,modalRoot
     )
   }
+}
+
+Modal.propTypes = {
+  onModalClose: PropTypes.func,
+  picture:  PropTypes.string.isRequired,
 }

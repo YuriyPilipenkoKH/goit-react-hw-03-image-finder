@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types';
 import { GalleryItem } from './ImageGalleryItem.styled'
 
 export  class ImageGalleryItem extends Component {
@@ -21,10 +22,16 @@ export  class ImageGalleryItem extends Component {
 }
 
 
+ImageGalleryItem.propTypes = {
+  onClickImg:PropTypes.func,
+  id: PropTypes.number.isRequired,
+  item: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      largeImageURL: PropTypes.string.isRequired,
+      webformatURL: PropTypes.string.isRequired,
+    })
+  ),
+};
 
-// export  const ImageGalleryItem =(item)=> {
-//     return (
-
-//     )
-//   }
   
