@@ -14,6 +14,7 @@ export class App extends Component {
     page: 1,
     perPage: 12,
     query: '',
+    status: 'idle',
     loadindg: false,
     showModal: false,
     showBtn: false,
