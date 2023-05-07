@@ -7,6 +7,7 @@ import { Searchbar } from 'components/Searchbar/Searchbar'
 import {fetchCard} from 'servises/fetch'
 import { ImageGallery } from 'components/ImageGallery/ImageGallery'
 import { Modal } from 'components/Modal/Modal'
+import Loader from 'components/Loader/Loader'
 
 export class App extends Component {
   state = {
@@ -15,12 +16,12 @@ export class App extends Component {
     perPage: 12,
     query: '',
     status: 'idle',
-    loadindg: false,
+    loading: false,
     showModal: false,
     showBtn: false,
     largeImgUrl: '',
     error: null,
-  }
+  }//  {status === 'pending' && <Loader />}
 
  
   handleSubmit =(e) => {
@@ -31,7 +32,7 @@ export class App extends Component {
       query: reqest,
       items : [],
       page: 1,
-      loadindg: true,
+      loading: true,
     })
 
     if(reqest === ''){
@@ -57,7 +58,7 @@ export class App extends Component {
 
     const {page, perPage, query } = this.state
    this.fetchGallery(query, page +1, perPage)
-   
+   this.setState({status: 'pending',})
   }
 
   onClickImg =(url) => {
@@ -77,7 +78,10 @@ export class App extends Component {
   async fetchGallery(query, page, perPage) {
     try {
       const response = await fetchCard(query, page, perPage)
-      this.setState(prev => ({items: [...prev.items, ...response]}))
+      this.setState(prev => ({
+        items: [...prev.items, ...response],
+        loading: false,
+      }))
        
       if (response.length < 12) {
         this.setState({showBtn: false})
@@ -91,7 +95,7 @@ export class App extends Component {
 
     } catch (error) {
       // Notiflix.Notify.error('xxx')
-      this.setState({error})
+      this.setState({ error, status: 'rejected' })
     }
     finally{
       this.setState({loadindg: false})
@@ -100,7 +104,7 @@ export class App extends Component {
 
 
   render() {
-    const {items, showBtn, showModal, largeImgUrl} = this.state
+    const {items, showBtn, showModal, largeImgUrl, loading} = this.state
     return (
       <Container>
         <Searchbar onSubmit ={this.handleSubmit}></Searchbar>
@@ -120,7 +124,7 @@ export class App extends Component {
                 onModalClose = {this.onModalClose}
                 picture = {largeImgUrl}
                 ></Modal>}
-      
+        {loading && <Loader />}
       </Container>
     )
   }
