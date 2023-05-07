@@ -15,13 +15,13 @@ export class App extends Component {
     page: 1,
     perPage: 12,
     query: '',
-    status: 'idle',
+    // status: 'idle',
     loading: false,
     showModal: false,
     showBtn: false,
     largeImgUrl: '',
     error: null,
-  }//  {status === 'pending' && <Loader />}
+  }
 
  
   handleSubmit =(e) => {
@@ -50,7 +50,7 @@ export class App extends Component {
     this.setState(prev => {  
       return {
         page: prev.page +1,
-        loadindg: true,
+        loading: true,
       }
       
     })
@@ -58,7 +58,7 @@ export class App extends Component {
 
     const {page, perPage, query } = this.state
    this.fetchGallery(query, page +1, perPage)
-   this.setState({status: 'pending',})
+  
   }
 
   onClickImg =(url) => {
@@ -95,7 +95,7 @@ export class App extends Component {
 
     } catch (error) {
       // Notiflix.Notify.error('xxx')
-      this.setState({ error, status: 'rejected' })
+      this.setState({ error})
     }
     finally{
       this.setState({loadindg: false})
