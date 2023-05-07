@@ -9,7 +9,6 @@ export const GalleryItem = styled.li`
     overflow: hidden;
     transition: all 0.4s;
     
-
     & > img {
     display: block;
     height: 30vh;

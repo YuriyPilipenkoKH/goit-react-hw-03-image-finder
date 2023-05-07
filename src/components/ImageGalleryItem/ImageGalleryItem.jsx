@@ -4,8 +4,6 @@ import { GalleryItem } from './ImageGalleryItem.styled'
 
 export  class ImageGalleryItem extends Component {
 
-
-
   render() {
     const {id, webformatURL, largeImageURL}  = this.props.item
     return (
@@ -21,17 +19,15 @@ export  class ImageGalleryItem extends Component {
   }
 }
 
-
 ImageGalleryItem.propTypes = {
-  onClickImg:PropTypes.func,
+  onClickImg: PropTypes.func,
   id: PropTypes.number.isRequired,
-  item: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.number.isRequired,
-      largeImageURL: PropTypes.string.isRequired,
-      webformatURL: PropTypes.string.isRequired,
-    })
-  ),
+  item: PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    largeImageURL: PropTypes.string.isRequired,
+    webformatURL: PropTypes.string.isRequired,
+  })
+ 
 };
 
   
