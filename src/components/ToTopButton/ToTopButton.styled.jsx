@@ -4,13 +4,28 @@ export const TopBtn = styled.button`
  position: fixed;
  bottom: 40px;
  right: 40px;
- width: 40px;
- height: 40px;
+ width: 70px;
+ height: 70px;
  display: flex;
  align-items: center;
  justify-content: center;
  padding: 12px;
  background-color: var(--green);
- border-radius: 5px;
+ border-radius: 10px;
  border: transparent;
+ cursor: pointer;
+ outline: none;
+  box-shadow: var(--shadow-four);
+  transition: all 0.4s ease;
+
+  &:hover,
+  &:focus{
+    color: #888;
+    background-color: var(--bright-green);
+    box-shadow: var(--shadow-two);
+   
+    & >svg {
+    fill: #888;
+    }
+}
 `

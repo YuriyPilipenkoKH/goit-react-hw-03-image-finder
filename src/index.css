@@ -297,7 +297,7 @@ img {
 
 }
 
- .iconGOITlens {
+ .iconGOITlens, .iconFroggy {
   transition: 0.4s ease;
   fill: #eee;
 }

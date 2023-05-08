@@ -1,5 +1,6 @@
 import React from 'react';
 import { TopBtn } from './ToTopButton.styled';
+import { iconSwipeup } from 'utils/svgIcons';
 
 class ToTopButton extends React.Component {
     constructor(props) {
@@ -38,7 +39,7 @@ class ToTopButton extends React.Component {
           className={`to-top-button ${isVisible && window.scrollY > 0 ? 'visible' : ''}`}
           onClick={this.handleClick}
         >
-          &#8593;
+         { iconSwipeup }
         </TopBtn>
       );
     }
