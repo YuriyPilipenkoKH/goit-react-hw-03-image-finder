@@ -23,23 +23,28 @@ export class App extends Component {
   }
 
  
-  handleSubmit =(e) => {
-    e.preventDefault()
+  handleSubmit =( query) => {
+    // e.preventDefault()
+    // console.log(e);
 
-    const reqest = e.target.search.value.trim()
+    // const reqest = e.target.search.value.trim()
+   
+
+    if(query === ''){
+      Notiflix.Notify.failure('The search string cannot be empty. Please specify your search query.');
+      // this.setState({loading: false})
+     return 
+    }
     this.setState({
-      query: reqest,
+      query: query,
       items : [],
       page: 1,
       loading: true,
     })
 
-    if(reqest === ''){
-      Notiflix.Notify.failure('The search string cannot be empty. Please specify your search query.');
-     return 
-    }
+
     const { perPage} = this.state
-    this.fetchGallery(reqest, 1, perPage)
+    this.fetchGallery(query, 1, perPage)
 
   
 }

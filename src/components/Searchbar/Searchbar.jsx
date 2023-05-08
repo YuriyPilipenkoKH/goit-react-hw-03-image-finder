@@ -14,12 +14,20 @@ export class Searchbar extends Component {
      this.setState({query: e.target.value.trim()})
     }
 
+    handleSubmit =(e) => {
+      e.preventDefault()
+
+      // this.props.onSubmit( e.target.elements.search.value)
+      this.props.onSubmit( this.state.query)
+      this.setState({query: ''})
+    }//this.props.onSubmit
+
 
   render() {
     return (
         <Header className="searchbar">
         <SearchForm 
-        onSubmit={ this.props.onSubmit }
+        onSubmit={ this.handleSubmit }
         className="form">
           <Button type="submit" className="search-btn">
             <span className="button-label"></span>{ iconCatSearch }
