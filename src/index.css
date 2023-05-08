@@ -26,6 +26,7 @@ body {
   --backdrop-color: #00000033;
   --overlay-color: #00000066;
   --body-color: #cad9d9;
+  --react-color: #00ccec;
   --orange: orange;
   --white: #ffffff;
   --black: #010101;
@@ -296,7 +297,11 @@ img {
 
 }
 
-.iconReact, .iconGOITlens {
+ .iconGOITlens {
   transition: 0.4s ease;
   fill: #eee;
+}
+
+.iconReact{
+  fill:rgb(65, 64, 64);
 }

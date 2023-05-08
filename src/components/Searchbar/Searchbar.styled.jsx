@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import reactIcon from "../../utils/react.svg"
 
 export const Header = styled.header`
     top: 0;
@@ -16,8 +17,6 @@ export const Header = styled.header`
   padding-bottom: 12px;
   color: #fff;
   background-color: transparent;
-  /* box-shadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.2),
-    0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12); */
 
 `
 
@@ -28,12 +27,18 @@ export const SearchForm = styled.form`
     gap: 8px;
 
     & >input{
+        min-width: 300px;
         outline: none;
         padding: 12px;
-        font-size: 22px;
+        font-size: 18px;
         border-radius: 8px;
         border: 3px solid transparent;
         box-shadow: var(--shadow-four);
+
+        background-image: url(${reactIcon});
+        background-size: contain;
+        background-position: right center;
+        background-repeat: no-repeat;
 
         &:focus {
            border-color: var(--orange);
