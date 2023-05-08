@@ -8,7 +8,8 @@ import {fetchCard} from 'servises/fetch'
 import { ImageGallery } from 'components/ImageGallery/ImageGallery'
 import { Modal } from 'components/Modal/Modal'
 import Loader from 'components/Loader/Loader'
-// import Notification from 'components/Notification'
+import ToTopButton from 'components/ToTopButton/ToTopButton'
+
 
 export class App extends Component {
   state = {
@@ -122,6 +123,8 @@ export class App extends Component {
                 picture = {largeImgUrl}
                 ></Modal>}
         {loading && <Loader />}
+        {showBtn && <ToTopButton></ToTopButton>}
+        
    
       </Container>
     )
