@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types';
 import Button from 'components/Button/Button'
-import { iconCatSearch } from 'utils/svgIcons'
+import { iconCatSearch, iconReact, iconGOITlens } from 'utils/svgIcons'
 import { SearchForm } from './Searchbar.styled'
 import { Header } from './Searchbar.styled'
-import { iconReact } from 'utils/svgIcons';
+
 
 export class Searchbar extends Component {
     state = {

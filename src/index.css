@@ -296,7 +296,7 @@ img {
 
 }
 
-.iconReact {
+.iconReact, .iconGOITlens {
   transition: 0.4s ease;
   fill: #eee;
 }
