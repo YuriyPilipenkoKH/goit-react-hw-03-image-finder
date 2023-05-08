@@ -1,9 +1,10 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types';
 import Button from 'components/Button/Button'
-import { iconCatSearch } from 'utils/icons'
+import { iconCatSearch } from 'utils/svgIcons'
 import { SearchForm } from './Searchbar.styled'
 import { Header } from './Searchbar.styled'
+import { iconReact } from 'utils/svgIcons';
 
 export class Searchbar extends Component {
     state = {
@@ -17,10 +18,9 @@ export class Searchbar extends Component {
     handleSubmit =(e) => {
       e.preventDefault()
 
-      // this.props.onSubmit( e.target.elements.search.value)
       this.props.onSubmit( this.state.query)
       this.setState({query: ''})
-    }//this.props.onSubmit
+    }
 
 
   render() {
@@ -29,7 +29,7 @@ export class Searchbar extends Component {
         <SearchForm 
         onSubmit={ this.handleSubmit }
         className="form">
-          <Button type="submit" className="search-btn">
+          <Button type="submit" className="search-btn">{ iconReact }
             <span className="button-label"></span>{ iconCatSearch }
           </Button>
       
@@ -43,6 +43,7 @@ export class Searchbar extends Component {
             autoFocus
             placeholder="Search images and photos"
           />
+          
         </SearchForm>
       </Header>
     )

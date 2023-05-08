@@ -2,12 +2,13 @@ import React, { Component } from 'react'
 import { Container } from 'components/Container/Container'
 import Notiflix from 'notiflix'
 import Button from 'components/Button/Button'
-import { iconLoader } from 'utils/icons'
+import { iconLoader } from 'utils/svgIcons'
 import { Searchbar } from 'components/Searchbar/Searchbar'
 import {fetchCard} from 'servises/fetch'
 import { ImageGallery } from 'components/ImageGallery/ImageGallery'
 import { Modal } from 'components/Modal/Modal'
 import Loader from 'components/Loader/Loader'
+// import Notification from 'components/Notification'
 
 export class App extends Component {
   state = {
@@ -20,21 +21,16 @@ export class App extends Component {
     showBtn: false,
     largeImgUrl: '',
     error: null,
+    notification: null,
   }
 
- 
   handleSubmit =( query) => {
-    // e.preventDefault()
-    // console.log(e);
-
-    // const reqest = e.target.search.value.trim()
-   
 
     if(query === ''){
       Notiflix.Notify.failure('The search string cannot be empty. Please specify your search query.');
-      // this.setState({loading: false})
      return 
     }
+
     this.setState({
       query: query,
       items : [],
@@ -42,12 +38,9 @@ export class App extends Component {
       loading: true,
     })
 
-
     const { perPage} = this.state
     this.fetchGallery(query, 1, perPage)
-
-  
-}
+  }
 
   onLoadMore = (e) => {
    
@@ -55,14 +48,11 @@ export class App extends Component {
       return {
         page: prev.page +1,
         loading: true,
-      }
-      
+      } 
     })
 
-
     const {page, perPage, query } = this.state
-   this.fetchGallery(query, page +1, perPage)
-  
+   this.fetchGallery(query, page +1, perPage) 
   }
 
   onClickImg =(url) => {
@@ -132,6 +122,7 @@ export class App extends Component {
                 picture = {largeImgUrl}
                 ></Modal>}
         {loading && <Loader />}
+   
       </Container>
     )
   }

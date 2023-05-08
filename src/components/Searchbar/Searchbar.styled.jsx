@@ -24,6 +24,7 @@ export const Header = styled.header`
 export const SearchForm = styled.form`
     
     display: flex;
+
     gap: 8px;
 
     & >input{
