@@ -1,12 +1,14 @@
 import styled from 'styled-components';
 
 export const TopBtn = styled.button`
+display: none;
+
  position: fixed;
  bottom: 40px;
  right: 40px;
  width: 70px;
  height: 70px;
- display: flex;
+
  align-items: center;
  justify-content: center;
  padding: 12px;
@@ -17,6 +19,10 @@ export const TopBtn = styled.button`
  outline: none;
   box-shadow: var(--shadow-four);
   transition: all 0.4s ease;
+
+ &.visible {
+  display: flex;
+ }
 
   &:hover,
   &:focus{

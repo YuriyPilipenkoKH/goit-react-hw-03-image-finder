@@ -18,14 +18,28 @@ class ToTopButton extends React.Component {
       window.removeEventListener('scroll', this.handleScroll);
     }
   
+    // handleScroll() {
+    //   const { isVisible } = this.state;
+    //   const shouldShow = window.scrollY > 300;
+    //   if (shouldShow && !isVisible) {
+    //     this.setState({ isVisible: true });
+    //   } else if (!shouldShow && isVisible) {
+    //     this.setState({ isVisible: false });
+    //   }
+    // }
+
     handleScroll() {
-      const { isVisible } = this.state;
-      const shouldShow = window.scrollY > 300;
-      if (shouldShow && !isVisible) {
-        this.setState({ isVisible: true });
-      } else if (!shouldShow && isVisible) {
-        this.setState({ isVisible: false });
-      }
+        
+        // const shouldShow = window.scrollY > 300;
+        const scrolled = window.pageYOffset;
+        const coords = document.documentElement.clientHeight;
+
+        if (scrolled > coords) {
+            this.setState({ isVisible: true });
+          }
+          if (scrolled < coords) {
+            this.setState({ isVisible: false });
+          }
     }
   
     handleClick() {

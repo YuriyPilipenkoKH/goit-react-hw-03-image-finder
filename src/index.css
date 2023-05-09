@@ -305,3 +305,7 @@ img {
 .iconReact{
   fill:rgb(65, 64, 64);
 }
+
+.to-top-button.visible {
+  display: flex;
+}
